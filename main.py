@@ -25,6 +25,7 @@ a = np.empty_like(t)
 cg_list_x = np.empty_like(t)
 cg_list_z = np.empty_like(t)
 cp_list_x = np.empty_like(t)
+cp_list_z = np.empty_like(t)
 mass_im_list = np.empty_like(t)
 
 
@@ -311,11 +312,13 @@ def simulation():
         cg_list_x[k] = global_center_gravity(k)[0]
         cg_list_z[k] = global_center_gravity(k)[1]
         cp_list_x[k] = (center_thrust(theta[k])[0])
+        cp_list_z[k] = (center_thrust(theta[k])[1])
         mass_im_list[k] = immersed_mass(theta[k])
 
         cg_list_x[k + 1] = global_center_gravity(k)[0]
         cg_list_z[k + 1] = global_center_gravity(k)[1]
         cp_list_x[k + 1] = (center_thrust(theta[k])[0])
+        cp_list_z[k + 1] = (center_thrust(theta[k])[1])
         mass_im_list[k + 1] = immersed_mass(theta[k])
 
         # print("{} \t CG = {} \t CP = {} \t CD = {} \t T = {}".format(k, couple_g, couple_p, couple_d, theta[k]))
