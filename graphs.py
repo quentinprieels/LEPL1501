@@ -37,7 +37,7 @@ def graph_centers_evolution():
     plt.plot(t, cg_list_z, '-r', label="Center of gravity - z")
     plt.plot(t, cp_list_z, label="Center Thrust - z")
     plt.xlabel("Time [s]")
-    plt.ylabel("Position x [m]")
+    plt.ylabel("Position z [m]")
     plt.legend()
     plt.show()
 
