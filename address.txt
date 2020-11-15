@@ -1,0 +1,8 @@
+Notre programme pyhton est diponnible sur GitHub à l'adresse suivente :
+
+	https://github.com/quentinprieels/LEPL1501 > branche master
+
+Il est composé de 3 fichier principaux :
+- main.py > les fonctions principales et calculs
+- graphs.py > afficher les graphiques
+- variables.py > choix des parramètres
