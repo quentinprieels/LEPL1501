@@ -22,8 +22,11 @@ theta = np.empty_like(t)
 omega = np.empty_like(t)
 couples = np.empty_like(t)
 a = np.empty_like(t)
-cg_list_x = []
-cg_list_z = []
+cg_list_x = np.empty_like(t)
+cg_list_z = np.empty_like(t)
+cp_list_x = np.empty_like(t)
+mass_im_list = np.empty_like(t)
+
 
 # --- Moving of the crane ---
 grue2_angle = np.empty_like(t)  # [rad] angle from horizontal of the 2 crane part
@@ -286,6 +289,9 @@ def immersed_mass(angle):
 
 # --- Angles ---
 def simulation():
+    """
+    :return: Completes the omega and theta lists according to couples
+    """
     # Initial conditions
     dt = step
     omega[0] = omega_0
@@ -302,6 +308,16 @@ def simulation():
         theta[k + 1] = theta[k] + omega[k] * dt
         a[k + 1] = a[k]
 
+        cg_list_x[k] = global_center_gravity(k)[0]
+        cg_list_z[k] = global_center_gravity(k)[1]
+        cp_list_x[k] = (center_thrust(theta[k])[0])
+        mass_im_list[k] = immersed_mass(theta[k])
+
+        cg_list_x[k + 1] = global_center_gravity(k)[0]
+        cg_list_z[k + 1] = global_center_gravity(k)[1]
+        cp_list_x[k + 1] = (center_thrust(theta[k])[0])
+        mass_im_list[k + 1] = immersed_mass(theta[k])
+
         # print("{} \t CG = {} \t CP = {} \t CD = {} \t T = {}".format(k, couple_g, couple_p, couple_d, theta[k]))
         # print("{} \t {} \t {}".format(k, immersed_mass(theta[k]), center_thrust(theta[k])))
 
@@ -310,6 +326,6 @@ def simulation():
 motion_list()
 simulation()
 
-for i in range(len(t)):
-    cg_list_x.append(global_center_gravity(i)[0])
-    cg_list_z.append(global_center_gravity(i)[1])
+E_g = mass_sum * g * (cg_list_x - cg_list_x[0])
+E_p = -mass_im_list * g * (cp_list_x - cp_list_x[0])
+E_k = (inertia * omega ** 2) / 2

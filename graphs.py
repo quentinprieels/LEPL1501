@@ -12,8 +12,8 @@ def graph_crane_motion():
     """
     plt.figure(1)
     plt.title("Motion of the crane")
-    plt.plot(t, grue2_angle * to_degrees, label="Angle 2d piece")
-    plt.plot(t, grue3_angle * to_degrees, label="Angle 3d piece")
+    plt.plot(t, grue2_angle * to_degrees, label="Angle 2nd piece")
+    plt.plot(t, grue3_angle * to_degrees, label="Angle 3rd piece")
     plt.plot(t, grue4_angle * to_degrees, label="Angle 4th piece")
     plt.xlabel("Time [s]")
     plt.ylabel("Angles [°]")
@@ -69,17 +69,34 @@ def graph_theta_omega():
 def graph_phase_diagram():
     plt.figure(4)
     plt.title("Phase Diagram")
-    plt.plot(theta, omega)
+    plt.plot(theta * to_degrees, omega * to_degrees)
     plt.xlabel("θ [°]")
-    plt.ylabel("ω [°]")
+    plt.ylabel("ω [°/s]")
     plt.show()
 
 
 def graph_energy():
-    E_G = mass_sum * g * (cg_list_x - cg_list_x[0])
-    E_C = -M * g * (y_C - y_C[0])
-    E_K = Im * omega * omega / 2
-    E_A = -Ca * theta
+    """
+    :return: Creates the graphics of the energy
+    """
+    plt.figure(5)
+    plt.suptitle("Energy")
+    plt.subplot(3, 1, 1)
+    plt.plot(t, E_g, label="Gravitational Energy")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Energy [J]")
+    plt.legend()
+    plt.subplot(3, 1, 2)
+    plt.plot(t, E_p, label="Thrust Energy")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Energy [J]")
+    plt.legend()
+    plt.subplot(3, 1, 3)
+    plt.plot(t, E_k, label="Kinetics Energy")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Energy [J]")
+    plt.legend()
+    plt.show()
 
 
 # --- Lunch program ---
@@ -87,3 +104,4 @@ graph_crane_motion()
 graph_centers_evolution()
 graph_theta_omega()
 graph_phase_diagram()
+graph_energy()
