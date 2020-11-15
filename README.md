@@ -45,8 +45,8 @@ Cette section est consacrée aux données sorties par le programme.
 ### Evolution :
 
 Le programe à connu deux phase : 
-             - une première avec des équations approximative ne prenant pas en compte  l'inertie de la barge (voir le projet : https://github.com/Nimbelungen/projet1-1157)
-             - puis une évolution prenant en compte tout les paramètres possibles
+- une première avec des équations approximative ne prenant pas en compte  l'inertie de la barge (voir le projet : https://github.com/Nimbelungen/projet1-1157)
+- puis une évolution prenant en compte tout les paramètres possibles
 
 ### Temps : 
 
