@@ -1,7 +1,7 @@
 # LEPL1501
 Modélisation de la grue du groupe 11.57 dans le cadre du cours Projet LEPL1501 du premier quadrimestre 2020 en inggénieur civil
 
-##Donnée à entrer
+## Donnée à entrer
 
 Cette section est consacrée aux variables à rentrer pour les calculs
 
@@ -21,7 +21,7 @@ Cette section est consacrée aux variables à rentrer pour les calculs
              - inertie
              - coeficiant d'amortissement
 
-##Données sorties par le programme 
+## Données sorties par le programme 
 
 Cette section est consacrée aux données sorties par le programme
 
@@ -33,18 +33,18 @@ Cette section est consacrée aux données sorties par le programme
              - des coordonées du centre de gravité et de poussée du système en fontion du temps
              - les différentes énergies du système en fonction du temps
 
-##Conclusion
+## Conclusion
 
-###Evolution :
+### Evolution :
 
 Le programe à connu deux phase : 
              - une première avec des équations approximative ne prenant pas en compte  l'inertie de la barge (voir le projet : https://github.com/Nimbelungen/projet1-1157)
              - puis une évolution prenant en compte tout les paramètres possibles
 
-###Temps : 
+### Temps : 
 
 Les différents programmeurs ont mit plusieur jour pour en arriver là, le programme fonctionne bien
 
-###modèle de grue utilisé :
+### Modèle de grue utilisé :
 
 Le modèle utilisé pour le grue est un bras mécanique géant. 
