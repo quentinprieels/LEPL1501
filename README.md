@@ -39,7 +39,14 @@ Cette section est consacrée aux données sorties par le programme.
              - des coordonées du centre de gravité et de poussée du système en fontion du temps
              - les différentes énergies du système en fonction du temps
 
-![](img/motionCrane.png) ![](img/centerGravity_centerThrust.png) ![](img/omegaAndTheta.png) ![](img/phaseDiagram.png) ![](img/energy.png)
+
+<img src="https://raw.githubusercontent.com/quentinprieels/LEPL1501/master/img/motionCrane.png" width="18%"></img> 
+<img src="https://raw.githubusercontent.com/quentinprieels/LEPL1501/master/img/centerGravity_centerThrust.png" width="18%"></img> 
+<img src="https://raw.githubusercontent.com/quentinprieels/LEPL1501/master/img/omegaAndTheta.png" width="18%"></img> 
+<img src="https://raw.githubusercontent.com/quentinprieels/LEPL1501/master/img/phaseDiagram.png" width="18%"></img> 
+<img src="https://raw.githubusercontent.com/quentinprieels/LEPL1501/master/img/energy.png" width="18%"></img> 
+
+
 ## Conclusion
 
 ### Evolution :
