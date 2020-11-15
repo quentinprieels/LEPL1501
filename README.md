@@ -29,15 +29,17 @@ fichier ```variables.py```.
 
 ## Données sorties par le programme 
 
-Cette section est consacrée aux données sorties par le programme.
+Cette section est consacrée aux données sorties par le programme. Les graphiques sont crées en 2 phase :
+- ```main.py``` : création des variables utilisées et applications de calculs
+- ```graphs.py``` : création des graphiques
 
-- les graphiques :
-             - de l'angle en fonction du temps
-             - la vitesse angulaire en fonction du temps
-             - l'accélération en fonction du temp
-             - du diagramme de phase
-             - des coordonées du centre de gravité et de poussée du système en fontion du temps
-             - les différentes énergies du système en fonction du temps
+- les graphiques sont :
+    - de l'angle en fonction du temps
+    - la vitesse angulaire en fonction du temps
+    - l'accélération en fonction du temp
+    - du diagramme de phase
+    - des coordonées du centre de gravité et de poussée du système en fontion du temps
+    - les différentes énergies du système en fonction du temps
 
 
 <img src="https://raw.githubusercontent.com/quentinprieels/LEPL1501/master/img/motionCrane.png" width="18%"></img> 
@@ -52,12 +54,12 @@ Cette section est consacrée aux données sorties par le programme.
 ### Evolution :
 
 Le programe à connu deux phase : 
-- une première avec des équations approximative ne prenant pas en compte  l'inertie de la barge (voir le projet : https://github.com/Nimbelungen/projet1-1157)
-- puis une évolution prenant en compte tout les paramètres possibles
+- Une première avec des équations approximative ne prenant pas en compte  l'inertie de la barge ([voir le projet](https://github.com/Nimbelungen/projet1-1157)).
+- Puis une évolution prenant en compte tout les paramètres possibles.
 
 ### Temps : 
 
-Les différents programmeurs ont mit plusieur jour pour en arriver là, le programme fonctionne bien
+Les différents programmeurs ont mit plusieur jour pour en arriver là, le programme fonctionne bien.
 
 ### Modèle de grue utilisé :
 
