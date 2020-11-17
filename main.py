@@ -263,12 +263,6 @@ def center_thrust(angle):
     # - Rotation of the system -
     return rotate_coord((ctx_rotate, ctz_rotate), angle)
 
-    """
-    ctx = (ctx_rotate * cos(angle)) + (ctz_rotate * -sin(angle))
-    ctz = (ctx_rotate * sin(angle)) + (ctz_rotate * cos(angle))
-    return tuple([ctx, ctz])
-    """
-
 
 def immersed_mass(angle):
     """
@@ -299,16 +293,19 @@ def simulation():
     theta[0] = theta_0
 
     for k in range(len(t) - 1):
+        # Torques
         couple_g = -mass_sum * g * global_center_gravity(k)[0]
         couple_p = immersed_mass(theta[k]) * g * center_thrust(theta[k])[0]
         couple_d = -D * omega[k]
         couples[k] = couple_g + couple_p + couple_d
 
+        # Angles and velocity
         a[k] = couples[k] / inertia
         omega[k + 1] = omega[k] + a[k] * dt
         theta[k + 1] = theta[k] + omega[k] * dt
         a[k + 1] = a[k]
 
+        # Centers list
         cg_list_x[k] = global_center_gravity(k)[0]
         cg_list_z[k] = global_center_gravity(k)[1]
         cp_list_x[k] = (center_thrust(theta[k])[0])
