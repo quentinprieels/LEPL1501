@@ -1,7 +1,7 @@
 from math import pi
 
 # -- Others --
-inertia = 1  # [kg.m**2]Inertia
+inertia = 0.152  # [kg.m**2]Inertia
 g = 9.81  # [m / s**2] Gravitational acceleration
 D = 1  # todo: what is this ?
 to_degrees = 180 / pi  # [#] coefficient to transform rad in degrees

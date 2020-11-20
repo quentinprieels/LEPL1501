@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-from main import *
-from variables import to_degrees
+from compet.main import *
+from compet.variables import to_degrees
 
 mi = maximum_inclination()
 

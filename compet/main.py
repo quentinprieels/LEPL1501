@@ -1,6 +1,6 @@
 import numpy as np
 from math import atan, cos, sin, tan
-from variables import *
+from compet.variables import *
 
 """COORDINATE SYSTEM 
 The following code takes place in a 3-dimensional coordinate system. However, some dimensions will be regularly ignored
@@ -99,7 +99,7 @@ def maximum_inclination():
     try:
         # Fist method
         tan_theta = (barge_z - height_submersion()) / (barge_x / 2)
-        angle_max = atan(tan_theta)
+        angle_max = - atan(tan_theta)
 
         return angle_max
 
@@ -165,7 +165,7 @@ def end_crane(index):
     motion_list()
     :return:  A tuple that is the coordinate along the x and z axis of the end of the crane
     """
-    hb = (barge_z / 2) - height_submersion()
+    hb = barge_z - height_submersion()
     end_crane_init = (((cos(grue2_angle[index]) * grue2_x) + (cos(grue3_angle[index]) * grue3_x[index]) + grue4_x),
                       (grue1_x + hb + (sin(grue2_angle[index]) * grue2_x) + (
                               sin(grue3_angle[index]) * grue3_x[index]) + grue4_z))
@@ -182,7 +182,7 @@ def global_center_gravity(index):
     """
     # -- Barge --
     hc = height_submersion()
-    hb = (barge_z / 2) - hc
+    hb = barge_z - hc
     barge_cg = (0, hb)
 
     # -- Grue --
@@ -294,9 +294,9 @@ def simulation():
 
     for k in range(len(t) - 1):
         # Torques
-        couple_g = -mass_sum * g * global_center_gravity(k)[0]
-        couple_p = immersed_mass(theta[k]) * g * center_thrust(theta[k])[0]
-        couple_d = -D * omega[k]
+        couple_g = -mass_sum * g * global_center_gravity(k)[0]                  # Couple gravitationnel
+        couple_p = immersed_mass(theta[k]) * g * center_thrust(theta[k])[0]     # Couple de poussé
+        couple_d = -D * omega[k]                                                # Couple d'ammorissement
         couples[k] = couple_g + couple_p + couple_d
 
         # Angles and velocity
