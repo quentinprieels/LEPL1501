@@ -4,6 +4,22 @@ from simple.variables import to_degrees
 
 
 # --- Creat graphs ---
+def graph_motion_crane():
+    plt.figure(1)
+    plt.suptitle("Motion of the crane")
+    plt.subplot(2, 1, 1)
+    plt.plot(t, cg_x, label="Center of gravity - x")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Position [m]")
+    plt.legend()
+    plt.subplot(2, 1, 2)
+    plt.plot(t, cg_z, label="Center of gravity - z")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Position [m]")
+    plt.legend()
+    plt.show()
+
+
 def graph_centers_evolution():
     """
     :return: Draws a graph that shows the position of the center of gravity and thrust over time
@@ -35,12 +51,11 @@ def graph_theta_omega():
              label="Submersion")
     plt.plot([0, t[-1]], [angle_elevation() * to_degrees, angle_elevation() * to_degrees], '--g',
              label="Elevation")
-    plt.plot([0, t[-1]], [- angle_submersion() * to_degrees, - angle_submersion() * to_degrees], '--r',
-             label="Submersion")
-    plt.plot([0, t[-1]], [- angle_elevation() * to_degrees, - angle_elevation() * to_degrees], '--g',
-             label="Elevation")
+    plt.plot([0, t[-1]], [- angle_submersion() * to_degrees, - angle_submersion() * to_degrees], '--r')
+    plt.plot([0, t[-1]], [- angle_elevation() * to_degrees, - angle_elevation() * to_degrees], '--g')
     plt.xlabel("Time [s]")
     plt.ylabel("θ [°]")
+    plt.legend()
 
     plt.subplot(3, 1, 2)
     plt.plot(t, omega * to_degrees)
@@ -91,6 +106,7 @@ def graph_energy():
 
 
 # --- Lunch program ---
+graph_motion_crane()
 graph_centers_evolution()
 graph_theta_omega()
 graph_phase_diagram()

@@ -13,7 +13,7 @@ The origin is positioned in the middle of the barge along the X and Y axis and a
 """
 
 # --- Simulation parameters ---
-step = 0.1  # [s] steps (dt)
+step = 0.01  # [s] steps (dt)
 end = 100  # [s] duration
 theta_0 = 0  # [rad] angle of inclination at t == 0
 omega_0 = 0  # [rad / s] angular velocity at t == 0
@@ -218,6 +218,10 @@ def simulation():
     theta[0] = theta_0
 
     for i in range(len(t) - 1):
+        # Rotation center gravity
+        cg_x[i] = rotate_coord((cg_x[i], cg_z[i]), theta[i])[0]
+        cg_z[i] = rotate_coord((cg_x[i], cg_z[i]), theta[i])[1]
+
         # Torques
         couple_g = -sum_mass * g * cg_x[i]
         couple_p = immersed_mass(theta[i]) * g * center_thrust(theta[i])[0]
@@ -239,6 +243,8 @@ def simulation():
     cp_z[1] = cp_z[2]
     cp_x[-1] = cp_x[-2]
     cp_z[-1] = cp_z[-2]
+    cg_x[-1] = cg_x[-2]
+    cg_z[-1] = cg_z[-2]
 
 
 # --- Lunch program and print results ---

@@ -2,9 +2,9 @@ from math import pi
 
 
 # --- Constants ---
-inertia = 0.152  # [kg * m**2] Inertia
+inertia = 1  # 0.152  # [kg * m**2] Inertia
 g = 9.81  # [m / s**2] Gravitational acceleration
-damping = 1.4  # [ ? ] Damping of the system
+damping = 0.8  # [ ? ] Damping of the system
 to_degrees = 180 / pi  # [#] coefficient to transform rad in degrees
 to_radians = pi / 180  # [#] coefficient to transform degrees in rad
 
@@ -32,9 +32,9 @@ crane_cg_z_values = (0.263486, 0.25552)  # [m] Values along the y-axis of the ce
 """ COORDINATES SYSTEM
 The origin of this coordinate system is located in the middle of the bottom of the crane base.
 """
-counterweight_mass = 0  # [kg] Counterweight mass
-counterweight_cg_x = 0  # [m] Values along the x-axis of the center of gravity of the counterweight
-counterweight_cg_z = 0  # [m] Values along the z-axis of the center of gravity of the counterweight
+counterweight_mass = 1.5  # [kg] Counterweight mass
+counterweight_cg_x = -0.25  # [m] Values along the x-axis of the center of gravity of the counterweight
+counterweight_cg_z = 0.05  # [m] Values along the z-axis of the center of gravity of the counterweight
 
 
 # --- If necessary ---
