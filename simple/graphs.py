@@ -67,8 +67,6 @@ def graph_theta_omega():
     plt.xlabel("Time [s]")
     plt.ylabel("a [rad / s ** 2]")
 
-    plt.legend()
-
     plt.show()
 
 
