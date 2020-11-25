@@ -260,6 +260,7 @@ print(tabulate([["Information's about", "Radians", "Degrees"],
                 ["Angle of submersion", angle_submersion(), angle_submersion() * to_degrees],
                 ["Angle of elevation", angle_elevation(), angle_elevation() * to_degrees],
                 ["Departure Inclination", theta[0], theta[0] * to_degrees],
-                ["Final Inclination", theta[-1], theta[-1] * to_degrees]], headers="firstrow"))
+                ["Final Inclination", theta[-1], theta[-1] * to_degrees]],
+               headers="firstrow"))
 print()
 print("Submersion Height = {}m".format(height_submersion()))

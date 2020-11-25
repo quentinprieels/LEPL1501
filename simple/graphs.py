@@ -103,9 +103,25 @@ def graph_energy():
     plt.show()
 
 
+def graph_energy_2():
+    """
+    :return: Creates the graphics of the energy
+    """
+    plt.figure(5)
+    plt.title("Energy")
+    plt.plot(t, E_g, label="Gravitational Energy")
+    plt.plot(t, E_p, label="Thrust Energy")
+    plt.plot(t, E_k, label="Kinetics Energy")
+    plt.xlabel("Time [s]")
+    plt.ylabel("Energy [J]")
+    plt.legend()
+    plt.show()
+
+
 # --- Lunch program ---
 graph_motion_crane()
 graph_centers_evolution()
 graph_theta_omega()
 graph_phase_diagram()
 graph_energy()
+graph_energy_2()
