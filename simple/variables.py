@@ -22,15 +22,13 @@ The origin of this coordinate system is located in the middle of the bottom of t
 """
 crane_mass = 1.73  # [kg] Mass of all this components
 # - Determinate with Fusion360 -
-crane_cg_x_values = (0.083423, 0.263486)  # [m] Values along the x-axis of the center of gravity of all components (
-# initial, final)  # ( ... 0.271)
-crane_cg_z_values = (0.266024, 0.25552)  # [m] Values along the y-axis of the center of gravity of all components (
-# initial, final) # (..., 0.229)
+crane_cg_x_values = (0.083423, 0.271)  # [m] Values along the x-axis of the center of gravity of all components (
+# initial, final)
+crane_cg_z_values = (0.266024, 0.229)  # [m] Values along the y-axis of the center of gravity of all components (
+# initial, final)
 
 # -- Test with difference mass --
 # test_cane = (mass, (cg_x_ini, cg_x_final), (cg_z_init, cg_z_final))
-z = 0
-x = 0
 test_crane_100 = (1.83, (0.100, 0.297), (0.267, 0.235))
 test_crane_200 = (1.93, (0.117, 0.321), (0.268, 0.240))
 test_crane_500 = (2.23, (0.156, 0.378), (0.271, 0.253))

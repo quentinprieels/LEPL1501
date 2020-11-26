@@ -107,7 +107,7 @@ def graph_energy_2():
     """
     :return: Creates the graphics of the energy
     """
-    plt.figure(5)
+    plt.figure(6)
     plt.title("Energy")
     plt.plot(t, E_g, label="Gravitational Energy")
     plt.plot(t, E_p, label="Thrust Energy")
@@ -118,10 +118,34 @@ def graph_energy_2():
     plt.show()
 
 
+def graph_masses():
+    """
+    :return: Creates the graphics of inclination in function of distance for some masses
+    """
+    plt.figure(7)
+    plt.title("Charges")
+    plt.plot([0, t[-1]], [angle_submersion() * to_degrees, angle_submersion() * to_degrees], '--r',
+             label="Submersion")
+    plt.plot([0, t[-1]], [angle_elevation() * to_degrees, angle_elevation() * to_degrees], '--g',
+             label="Elevation")
+    # plt.plot(..., ..., label="")
+    # plt.plot(..., ..., label="")
+    # plt.plot(..., ..., label="")
+    # plt.plot(..., ..., label="")
+    # plt.plot(..., ..., label="")
+    plt.xlabel("Distance [m]")
+    plt.ylabel("Inclination [°]")
+    plt.legend()
+    plt.show()
+
+
 # --- Lunch program ---
+
 graph_motion_crane()
 graph_centers_evolution()
 graph_theta_omega()
 graph_phase_diagram()
 graph_energy()
 graph_energy_2()
+
+graph_masses()

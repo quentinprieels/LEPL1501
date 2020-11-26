@@ -14,27 +14,26 @@ The origin is positioned in the middle of the barge along the X and Y axis and a
 
 # --- Simulation parameters ---
 step = 0.01  # [s] steps (dt)
-end = 100  # [s] duration
+end_time = 100  # [s] duration
 theta_0 = 0  # [rad] angle of inclination at t == 0
 omega_0 = 0  # [rad / s] angular velocity at t == 0
 begin_motion = 10  # [%] begin of motion (elapsed time)
 end_motion = 50  # [%] end of motion (elapsed time)
 
-# Lists with numpy
-t = np.arange(0, end, step)  # [s] list of all times
+# Lists with numpy - Need time
+t = np.arange(0, end_time, step)  # [s] list of all times
 theta = np.empty_like(t)  # [rad] list of all values of theta
 omega = np.empty_like(t)  # [rad / s] list of all values of omega : the angular velocity
 a = np.empty_like(t)  # [rad / s**2] list of all values of a : the angular acceleration
 couples = np.empty_like(t)  # [N] list of all sum of torques
 
-crane_cg_x = np.empty_like(t)
-crane_cg_z = np.empty_like(t)
-
-cg_x = np.empty_like(t)  # [m] All the position along the x-axis of the center of gravity
-cg_z = np.empty_like(t)  # [m] All the position along the z-axis of the center of gravity
-cp_x = np.empty_like(t)  # [m] All the position along the x-axis of the center of thrust
-cp_z = np.empty_like(t)  # [m] All the position along the z-axis of the center of thrust
-immersed_mass_values = np.empty_like(t)
+crane_cg_x = np.empty_like(t)  # [m] Center of gravity af the crane along axe x (for each time)
+crane_cg_z = np.empty_like(t)  # [m] Center of gravity af the crane along axe z (for each time)
+cg_x = np.empty_like(t)  # [m] Position along the x-axis of the center of gravity (for each time)
+cg_z = np.empty_like(t)  # [m] Position along the z-axis of the center of gravity (for each time)
+cp_x = np.empty_like(t)  # [m] Position along the x-axis of the center of thrust (for each time)
+cp_z = np.empty_like(t)  # [m] Position along the z-axis of the center of thrust(for each time)
+immersed_mass_values = np.empty_like(t)  # [kg] Value of the immersed mass (for each time)
 
 
 # --- Moving of the crane ---
@@ -125,19 +124,23 @@ def angle_elevation():
         raise ValueError("WARNING : The angle of elevation is not between -pi / 2 and pi / 2")
 
 
-def center_gravity():
+# --- Calculus of the values when the crane is moving ---
+def center_gravity(crane_center_gravity_x, crane_center_gravity_z):
     """
     This function calculates the center of gravity of the whole system.
     FORMULA cg = sum of (mass_i * distance_(origin,point_i) / sum of mass_i
+    :param crane_center_gravity_x: A list of all the center of gravity of the crane along the x axis
+    :param crane_center_gravity_z: A list of all the center of gravity of the crane along the z axis
     :return: Fill the list of cg_x and cg_z
     """
-    counter_problem = 0
+    counter_if_problem = 0
     try:
         hc = height_submersion()
         hb = barge_z - hc
-        for i in range(len(t)):
+        for i in range(len(cg_x)):  # We sai len(cg_x) instead of len(t) to avoid errors when using the functions with
+            # lists of a different size.
             barge_cg = (0, (barge_z / 2) - hc)
-            crane_cg = (crane_cg_x[i], hb + crane_cg_z[i])
+            crane_cg = (crane_center_gravity_x[i], hb + crane_center_gravity_z[i])
             counterweight_cg = (counterweight_cg_x, hb + counterweight_cg_z)
 
             cg_x[i] = ((crane_mass * barge_cg[0]) +
@@ -148,15 +151,15 @@ def center_gravity():
                        (crane_mass * crane_cg[1]) +
                        (counterweight_mass * counterweight_cg[1])) / sum_mass
 
-            counter_problem += 1
+            counter_if_problem += 1
 
         return True
 
     except ZeroDivisionError:
         ZeroDivisionError("WARNING : Problem when calculating the center of gravity = ZeroDivision Value of i {}"
-                          .format(counter_problem))
+                          .format(counter_if_problem))
     except:
-        raise ("WARNING : Problem when calculating the center of gravity. Value of i {}".format(counter_problem))
+        raise ("WARNING : Problem when calculating the center of gravity. Value of i {}".format(counter_if_problem))
 
 
 def center_thrust(angle):
@@ -210,7 +213,7 @@ def simulation():
     :return: Completes the omega, theta, a, cp_x and cp_z lists according to couples
     """
     motion()
-    center_gravity()
+    center_gravity(crane_cg_x, crane_cg_z)
 
     # Initial conditions
     dt = step
@@ -245,6 +248,21 @@ def simulation():
     cp_z[-1] = cp_z[-2]
     cg_x[-1] = cg_x[-2]
     cg_z[-1] = cg_z[-2]
+
+
+# --- Use of other parameters for the crane (test) ---
+def test_masses(name_of_test):
+    test_step = 0.0001
+    test_crane_cg_x = np.arange(name_of_test[2][1], name_of_test[2][1], test_step)
+    test_crane_cg_z = np.arange(name_of_test[3][1], name_of_test[3][1], test_step)
+    # 1. List of center of gravity for each test with a step
+    # 1.1 find the step
+
+    # 2. Binary search of the angle of inclination
+    # (we knows the cg and we will find the theta that equals cg_x and center_trust(theta)_x
+    # 3. Fill the list of theta for each cg_x (with a step)
+    # 4. Repeat this operation for each test
+    # 5. Graph
 
 
 # --- Lunch program and print results ---
