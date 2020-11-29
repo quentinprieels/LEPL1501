@@ -139,17 +139,19 @@ def center_gravity():
             barge_cg = (0, (barge_z / 2) - hc)
             crane_cg = (crane_cg_x[i], hb + crane_cg_z[i])
             counterweight_cg = (counterweight_cg_x, hb + counterweight_cg_z)
+            wood_plank_cg = (wood_plank_cg_x, hb + wood_plank_cg_z)
 
             cg_x[i] = ((crane_mass * barge_cg[0]) +
                        (crane_mass * crane_cg[0]) +
+                       (wood_plank_mass * wood_plank_cg[0]) +
                        (counterweight_mass * counterweight_cg[0])) / sum_mass
 
             cg_z[i] = ((crane_mass * barge_cg[1]) +
                        (crane_mass * crane_cg[1]) +
+                       (wood_plank_mass * wood_plank_cg[0]) +
                        (counterweight_mass * counterweight_cg[1])) / sum_mass
 
             counter_problem += 1
-
         return True
 
     except ZeroDivisionError:
