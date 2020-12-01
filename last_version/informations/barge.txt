@@ -1,0 +1,76 @@
+test2_montage v21
+
+Occurrences de composants (1)
+Aire	7.092E+05 mm^2
+Densité	0.001 g / mm^3
+Masse	1730.368 g
+Volume	1.236E+06 mm^3
+Matière physique	(Divers)
+
+Zone de délimitation
+	Longueur 	 652.937 mm
+	Largeur 	 218.107 mm
+	Hauteur 	 520.00 mm
+Réel X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
+Centre de masse	69.238 mm, -4.092 mm, 251.955 mm
+
+Moment d'inertie au centre de masse   (g mm^2)
+	Ixx = 3.395E+07
+	Ixy = -4.736E+05
+	Ixz = -2.059E+06
+	Iyx = -4.736E+05
+	Iyy = 6.549E+07
+	Iyz = 1.157E+06
+	Izx = -2.059E+06
+	Izy = 1.157E+06
+	Izz = 3.390E+07
+
+Moment d'inertie à l'origine   (g mm^2)
+	Ixx = 1.438E+08
+	Ixy = 1.661E+04
+	Ixz = -3.225E+07
+	Iyx = 1.661E+04
+	Iyy = 1.836E+08
+	Iyz = 2.941E+06
+	Izx = -3.225E+07
+	Izy = 2.941E+06
+	Izz = 4.223E+07
+
+------------------------------------------------------------------------------------------------------------------------
+test2_montage v2
+
+Occurrences de composants (1)
+Aire	7.092E+05 mm^2
+Densité	0.001 g / mm^3
+Masse	1730.368 g
+Volume	1.236E+06 mm^3
+Matière physique	(Divers)
+
+Zone de délimitation
+	Longueur 	 1126.322 mm
+	Largeur 	 218.107 mm
+	Hauteur 	 499.845 mm
+Réel X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
+Centre de masse	248.846 mm, -4.174 mm, 257.241 mm
+
+Moment d'inertie au centre de masse   (g mm^2)
+	Ixx = 2.241E+07
+	Ixy = -1.771E+06
+	Ixz = -2.971E+07
+	Iyx = -1.771E+06
+	Iyy = 1.672E+08
+	Iyz = 5.805E+05
+	Izx = -2.971E+07
+	Izy = 5.805E+05
+	Izz = 1.472E+08
+
+Moment d'inertie à l'origine   (g mm^2)
+	Ixx = 1.369E+08
+	Ixy = 2.650E+04
+	Ixz = -1.405E+08
+	Iyx = 2.650E+04
+	Iyy = 3.888E+08
+	Iyz = 2.439E+06
+	Izx = -1.405E+08
+	Izy = 2.439E+06
+	Izz = 2.544E+08

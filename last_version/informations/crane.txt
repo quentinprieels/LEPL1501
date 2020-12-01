@@ -1,0 +1,37 @@
+test2_montage v21
+
+Occurrences de composants (1)
+Aire	7.092E+05 mm^2
+Densité	0.001 g / mm^3
+Masse	1730.368 g
+Volume	1.236E+06 mm^3
+Matière physique	(Divers)
+
+Zone de délimitation
+	Longueur 	 657.425 mm
+	Largeur 	 218.107 mm
+	Hauteur 	 520.00 mm
+Réel X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
+Centre de masse	82.416 mm, -4.092 mm, 261.617 mm
+
+Moment d'inertie au centre de masse   (g mm^2)
+	Ixx = 3.020E+07
+	Ixy = -6.152E+05
+	Ixz = -2.555E+06
+	Iyx = -6.152E+05
+	Iyy = 7.077E+07
+	Iyz = 1.056E+06
+	Izx = -2.555E+06
+	Izy = 1.056E+06
+	Izz = 4.292E+07
+
+Moment d'inertie à l'origine   (g mm^2)
+	Ixx = 1.487E+08
+	Ixy = -3.168E+04
+	Ixz = -3.986E+07
+	Iyx = -3.168E+04
+	Iyy = 2.010E+08
+	Iyz = 2.908E+06
+	Izx = -3.986E+07
+	Izy = 2.908E+06
+	Izz = 5.470E+07

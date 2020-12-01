@@ -1,9 +1,9 @@
 import numpy as np
 from tabulate import tabulate
-from simple.variables import *
+from last_version.scripts.variables import *
 from math import sin, cos, tan, atan, pi
 
-"""COORDINATE SYSTEM 
+"""COORDINATE SYSTEM
 The following code takes place in a 3-dimensional coordinate system. However, some dimensions will be regularly ignored
 (especially the Y component). A tuple with 2 coordinates is thus composed of the x-y coordinates. 
 The X axis is horizontal (length) 
@@ -17,8 +17,8 @@ step = 0.01  # [s] steps (dt)
 end = 100  # [s] duration
 theta_0 = 0  # [rad] angle of inclination at t == 0
 omega_0 = 0  # [rad / s] angular velocity at t == 0
-begin_motion = 10  # [%] begin of motion (elapsed time)
-end_motion = 50  # [%] end of motion (elapsed time)
+begin_motion = 50  # [%] begin of motion (elapsed time)
+end_motion = 75  # [%] end of motion (elapsed time)
 
 # Lists with numpy
 t = np.arange(0, end, step)  # [s] list of all times
@@ -38,6 +38,24 @@ immersed_mass_values = np.empty_like(t)
 
 
 # --- Moving of the crane ---
+def choose_crane_cg(test):
+    if test == "100":
+        crane_cg_x_values = (test_crane_100[1][0], test_crane_100[1][1])
+        crane_cg_z_values = (test_crane_100[2][0], test_crane_100[2][1])
+    elif test == "200":
+        crane_cg_x_values = (test_crane_200[1][0], test_crane_200[1][1])
+        crane_cg_z_values = (test_crane_200[2][0], test_crane_200[2][1])
+    elif test == "500":
+        crane_cg_x_values = (test_crane_500[1][0], test_crane_500[1][1])
+        crane_cg_z_values = (test_crane_500[2][0], test_crane_500[2][1])
+    elif test == "700":
+        crane_cg_x_values = (test_crane_700[1][0], test_crane_700[1][1])
+        crane_cg_z_values = (test_crane_700[2][0], test_crane_700[2][1])
+
+
+choose_crane_cg("700")
+
+
 def motion():
     """
     Fill in the (movement) lists of the center of gravity of the crane according to time and percentage of duration.
@@ -136,22 +154,20 @@ def center_gravity():
         hc = height_submersion()
         hb = barge_z - hc
         for i in range(len(t)):
-            barge_cg = (0, (barge_z / 2) - hc)
-            crane_cg = (crane_cg_x[i], hb + crane_cg_z[i])
+            barge_cg = (barge_cg_values[0], barge_cg_values[1] - hc)
+            crane_cg = (crane_cg_x[i], hb + 0.075 + crane_cg_z[i])
             counterweight_cg = (counterweight_cg_x, hb + counterweight_cg_z)
-            wood_plank_cg = (wood_plank_cg_x, hb + wood_plank_cg_z)
 
             cg_x[i] = ((crane_mass * barge_cg[0]) +
                        (crane_mass * crane_cg[0]) +
-                       (wood_plank_mass * wood_plank_cg[0]) +
                        (counterweight_mass * counterweight_cg[0])) / sum_mass
 
             cg_z[i] = ((crane_mass * barge_cg[1]) +
                        (crane_mass * crane_cg[1]) +
-                       (wood_plank_mass * wood_plank_cg[0]) +
                        (counterweight_mass * counterweight_cg[1])) / sum_mass
 
             counter_problem += 1
+
         return True
 
     except ZeroDivisionError:
@@ -169,21 +185,34 @@ def center_thrust(angle):
     submerged shape change. IN RADIANS
     :return: A tuple with the coordinate along X- and Z-axis of the center of trust
     """
+
     hc = height_submersion()
 
     # Slides S8 - Page 'Flotteur' where parallel_long = h1 and parallel_short = h2
-    parallel_long = hc + abs((tan(angle) * (barge_x / 2)))
-    parallel_short = hc - abs((tan(angle) * (barge_x / 2)))
+    if angle < 0:
+        # tan(angle) is < 0 and parallel_right > parallel_left
+        parallel_right = hc + abs((tan(angle) * (barge_x / 2)))
+        parallel_left = hc + (tan(angle) * (barge_x / 2))
 
-    # Application formulas
-    lctx = (barge_x * (parallel_long + (2 * parallel_short))) / \
-           (3 * (parallel_long + parallel_long))
-    lctz = ((parallel_long ** 2) + (parallel_long * parallel_short) + (parallel_short ** 2)) / \
-           (3 * (parallel_long + parallel_long))
+        # Coordinate for x component
+        lctx = (barge_x * (parallel_right + (2 * parallel_left))) / \
+               (3 * (parallel_right + parallel_left))
+        ctx_rotate = (barge_x / 2) - lctx
 
-    # Coordinates in the inclined system
-    ctx_rotate = (barge_z / 2) - lctx
-    ctz_rotate = -(hc - lctz)  # It is underwater thus negative
+    else:
+        # tan(angle) is >= 0 and parallel_right <= parallel_left
+        parallel_right = hc - (tan(angle) * (barge_x / 2))
+        parallel_left = hc + (tan(angle) * (barge_x / 2))
+
+        # Coordinate for x component
+        lctx = (barge_x * (parallel_left + (2 * parallel_right))) / \
+               (3 * (parallel_left + parallel_right))
+        ctx_rotate = -(barge_x / 2) + lctx
+
+    # Coordinate for z component
+    lctz = ((parallel_right ** 2) + (parallel_right * parallel_left) + (parallel_left ** 2)) / \
+           (3 * (parallel_right + parallel_left))
+    ctz_rotate = -hc + lctz  # It is underwater thus negative
 
     # Rotation of the system
     return rotate_coord((ctx_rotate, ctz_rotate), angle)
@@ -197,10 +226,18 @@ def immersed_mass(angle):
     :return: float that is the immersed mass
     """
     hc = height_submersion()
-    parallel_long = hc + abs((tan(angle) * (barge_x / 2)))
-    parallel_short = hc - abs((tan(angle) * (barge_x / 2)))
 
-    trapeze_area = ((parallel_long + parallel_short) * barge_z) / 2
+    if angle < 0:
+        # tan(angle) is < 0 and parallel_right > parallel_left
+        parallel_right = hc + abs((tan(angle) * (barge_x / 2)))
+        parallel_left = hc + (tan(angle) * (barge_x / 2))
+
+    else:
+        # tan(angle) is >= 0 and parallel_right <= parallel_left
+        parallel_right = hc - (tan(angle) * (barge_x / 2))
+        parallel_left = hc + (tan(angle) * (barge_x / 2))
+
+    trapeze_area = ((parallel_right + parallel_left) * barge_x) / 2
     sub_volume = trapeze_area * barge_y
     mass_im = sub_volume * 1000
     return mass_im
@@ -221,8 +258,9 @@ def simulation():
 
     for i in range(len(t) - 1):
         # Rotation center gravity
+        cg_x_current = cg_x[i]
         cg_x[i] = rotate_coord((cg_x[i], cg_z[i]), theta[i])[0]
-        cg_z[i] = rotate_coord((cg_x[i], cg_z[i]), theta[i])[1]
+        cg_z[i] = rotate_coord((cg_x_current, cg_z[i]), theta[i])[1]
 
         # Torques
         couple_g = -sum_mass * g * cg_x[i]

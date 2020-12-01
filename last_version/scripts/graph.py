@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-from simple.calculations import *
-from simple.variables import to_degrees
+from last_version.scripts.calculations import *
+from last_version.scripts.variables import to_degrees
 
 
 # --- Creat graphs ---
@@ -48,10 +48,10 @@ def graph_theta_omega():
     plt.subplot(3, 1, 1)
     plt.plot(t, theta * to_degrees)
     # plt.plot([0, t[-1]], [angle_submersion() * to_degrees, angle_submersion() * to_degrees], '--r',
-          #   label="Submersion")
+    # label="Submersion")
     plt.plot([0, t[-1]], [angle_elevation() * to_degrees, angle_elevation() * to_degrees], '--g',
              label="Elevation")
-   # plt.plot([0, t[-1]], [- angle_submersion() * to_degrees, - angle_submersion() * to_degrees], '--r')
+    # plt.plot([0, t[-1]], [- angle_submersion() * to_degrees, - angle_submersion() * to_degrees], '--r')
     plt.plot([0, t[-1]], [- angle_elevation() * to_degrees, - angle_elevation() * to_degrees], '--g')
     plt.xlabel("Time [s]")
     plt.ylabel("θ [°]")
@@ -120,11 +120,9 @@ def graph_energy_2():
 
 # --- Lunch program ---
 
-graph_motion_crane()
+# graph_motion_crane()
 graph_centers_evolution()
-
 graph_theta_omega()
-
 graph_phase_diagram()
-graph_energy()
-graph_energy_2()
+# graph_energy()
+# graph_energy_2()
