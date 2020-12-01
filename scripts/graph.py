@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-from last_version.scripts.calculations import *
-from last_version.scripts.variables import to_degrees
+from scripts.calculations import *
+from scripts.variables import to_degrees
 
 
 # --- Creat graphs ---

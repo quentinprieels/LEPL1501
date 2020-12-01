@@ -1,6 +1,6 @@
 import numpy as np
 from tabulate import tabulate
-from last_version.scripts.variables import *
+from scripts.variables import *
 from math import sin, cos, tan, atan, pi
 
 """COORDINATE SYSTEM
