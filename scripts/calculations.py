@@ -38,24 +38,6 @@ immersed_mass_values = np.empty_like(t)
 
 
 # --- Moving of the crane ---
-def choose_crane_cg(test):
-    if test == "100":
-        crane_cg_x_values = (test_crane_100[1][0], test_crane_100[1][1])
-        crane_cg_z_values = (test_crane_100[2][0], test_crane_100[2][1])
-    elif test == "200":
-        crane_cg_x_values = (test_crane_200[1][0], test_crane_200[1][1])
-        crane_cg_z_values = (test_crane_200[2][0], test_crane_200[2][1])
-    elif test == "500":
-        crane_cg_x_values = (test_crane_500[1][0], test_crane_500[1][1])
-        crane_cg_z_values = (test_crane_500[2][0], test_crane_500[2][1])
-    elif test == "700":
-        crane_cg_x_values = (test_crane_700[1][0], test_crane_700[1][1])
-        crane_cg_z_values = (test_crane_700[2][0], test_crane_700[2][1])
-
-
-choose_crane_cg("700")
-
-
 def motion():
     """
     Fill in the (movement) lists of the center of gravity of the crane according to time and percentage of duration.

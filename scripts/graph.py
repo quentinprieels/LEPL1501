@@ -27,8 +27,8 @@ def graph_centers_evolution():
     plt.figure(2)
     plt.suptitle("Center of gravity and Center Thrust")
     plt.subplot(2, 1, 1)
-    plt.plot(t, cg_x, '-r', label="Center of gravity - x")
     plt.plot(t, cp_x, label="Center Thrust - x")
+    plt.plot(t, cg_x, '-r', label="Center of gravity - x")
     plt.xlabel("Time [s]")
     plt.ylabel("Position x [m]")
     plt.legend()
@@ -119,10 +119,9 @@ def graph_energy_2():
 
 
 # --- Lunch program ---
-
-# graph_motion_crane()
+graph_motion_crane()
 graph_centers_evolution()
 graph_theta_omega()
 graph_phase_diagram()
-# graph_energy()
-# graph_energy_2()
+graph_energy()
+graph_energy_2()
