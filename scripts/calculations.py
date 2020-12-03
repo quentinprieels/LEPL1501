@@ -17,8 +17,8 @@ step = 0.01  # [s] steps (dt)
 end = 100  # [s] duration
 theta_0 = 0  # [rad] angle of inclination at t == 0
 omega_0 = 0  # [rad / s] angular velocity at t == 0
-begin_motion = 50  # [%] begin of motion (elapsed time)
-end_motion = 75  # [%] end of motion (elapsed time)
+begin_motion = 30  # [%] begin of motion (elapsed time)
+end_motion = 60  # [%] end of motion (elapsed time)
 
 # Lists with numpy
 t = np.arange(0, end, step)  # [s] list of all times
@@ -104,7 +104,6 @@ def angle_submersion():
     Calculate the angle of submersion of the barge. This is the angle beyond which water begins to come on the barge.
     :return: The value in radians of the angle of submersion (rotation around the y-axis).
     """
-    # todo: The angle is defined as negative ?
     angle_submersion_value = - atan((barge_z - height_submersion()) / (barge_x / 2))  # [rad]
     if - pi / 2 < angle_submersion_value < pi / 2:
         return angle_submersion_value
@@ -270,20 +269,12 @@ def simulation():
     cg_z[-1] = cg_z[-2]
 
 
-# --- Lunch program and print results ---
+# --- Lunch program ---
 simulation()
+
+# --- Create energy's lists ---
 E_g = sum_mass * g * (cg_x - cg_x[0])
 E_p = - immersed_mass_values * g * (cp_x - cp_x[0])
 E_k = (inertia * omega ** 2) / 2
+E_tot = E_g + E_p + E_k
 
-print("Simulation of the crane - group 11.57")
-print("=====================================")
-print()
-print(tabulate([["Information's about", "Radians", "Degrees"],
-                ["Angle of submersion", angle_submersion(), angle_submersion() * to_degrees],
-                ["Angle of elevation", angle_elevation(), angle_elevation() * to_degrees],
-                ["Departure Inclination", theta[0], theta[0] * to_degrees],
-                ["Final Inclination", theta[-1], theta[-1] * to_degrees]],
-               headers="firstrow"))
-print()
-print("Submersion Height = {}m".format(height_submersion()))
