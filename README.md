@@ -62,4 +62,4 @@ Les différents programmeurs ont mis plusieurs jours pour en arriver là, le pro
 Le modèle utilisé pour la grue est un bras mécanique géant.
 
 #### Attention 
-Le progrramme ne prend pas en compte le vent, la force des vagues et autres élément naturels dût à la pleine mer lors de la simulation
+Le programme ne prend pas en compte le vent, la force des vagues et autres élément naturels dût à la pleine mer lors de la simulation
