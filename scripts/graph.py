@@ -165,4 +165,5 @@ with open('C:/Users/quent/PycharmProjects/Modelisation/graphs/results.txt', 'w')
                "Simulation of the crane - group 11.57 \n"
                "===================================== \n \n"
                + table + "\n \n"
-                         "Submersion Height = {}m".format(height_submersion()))
+               "Submersion Height = {}m \n"
+               "Counterweight : x : {}, z: {}".format(height_submersion(), counterweight_cg_x, counterweight_cg_z))

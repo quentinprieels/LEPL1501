@@ -44,4 +44,4 @@ counterweight_cg_x = -0.2  # [m] Values along the x-axis of the center of gravit
 counterweight_cg_z = -0.13  # [m] Values along the z-axis of the center of gravity of the counterweight
 
 # --- Total ---
-sum_mass = barge_mass + crane_mass + counterweight_mass  # + wood_plank_mass
+sum_mass = barge_mass + crane_mass + counterweight_mass

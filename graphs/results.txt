@@ -1,4 +1,4 @@
-Date : 2020-12-03 19:59:39.678424
+Date : 2020-12-04 09:13:38.603337
  
 Simulation of the crane - group 11.57 
 ===================================== 
@@ -11,4 +11,5 @@ Departure Inclination       0            0
 Inclination before moving   0.0324731    1.86057
 Final Inclination          -0.0177665   -1.01794
  
-Submersion Height = 0.024242424242424242m
+Submersion Height = 0.024242424242424242m 
+Counterweight : x : -0.2, z: -0.13
