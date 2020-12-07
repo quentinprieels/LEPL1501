@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from tabulate import tabulate
 from scripts.calculations import *
 from scripts.variables import to_degrees
 import os

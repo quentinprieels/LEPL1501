@@ -1,15 +1,15 @@
-Date : 2020-12-04 09:13:38.603337
+Date : 2020-12-07 15:37:40.927553
  
 Simulation of the crane - group 11.57 
 ===================================== 
  
 Information's about           Radians    Degrees
 -------------------------  ----------  ---------
-Angle of submersion        -0.428908   -24.5746
-Angle of elevation         -0.087927    -5.03784
+Angle of submersion        -0.489099   -28.0233
+Angle of elevation         -0.0857397   -4.91252
 Departure Inclination       0            0
-Inclination before moving   0.0324731    1.86057
-Final Inclination          -0.0177665   -1.01794
+Inclination before moving   0.0762516    4.36889
+Final Inclination          -0.0353018   -2.02264
  
-Submersion Height = 0.024242424242424242m 
-Counterweight : x : -0.2, z: -0.13
+Submersion Height = 0.023636363636363636m 
+Counterweight : x : -0.2, z: -0.15

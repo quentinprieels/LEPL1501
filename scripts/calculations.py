@@ -1,5 +1,4 @@
 import numpy as np
-from tabulate import tabulate
 from scripts.variables import *
 from math import sin, cos, tan, atan, pi
 
