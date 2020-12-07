@@ -2,7 +2,8 @@
 Modélisation de la grue du groupe 11.57 dans le cadre du cours Projet LEPL1501 du premier quadrimestre 2020 en ingénieur Civil.
 Dans le cadre de ce projet, il faut concevoir une grue flottante permettant de construire une éolienne en mer.
 Cette grue a d'abord été modélisée sur un logiciel de développement 3D appelé *[Fusion 360](https://www.autodesk.com/products/fusion-360/overview)*.
-![La grue sur Fusion360](img/crane.png)
+<img align="center" src="img/crane.png"></img>
+
 Le programme python ci-dessus a pour but de modéliser mathématiquement le comportement de cette grue.
 
 ## Données à entrer
