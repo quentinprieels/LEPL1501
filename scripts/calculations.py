@@ -13,10 +13,10 @@ The origin is positioned in the middle of the barge along the X and Y axis and a
 
 # --- Simulation parameters ---
 step = 0.01  # [s] steps (dt)
-end = 100  # [s] duration
+end = 90  # [s] duration
 theta_0 = 0  # [rad] angle of inclination at t == 0
 omega_0 = 0  # [rad / s] angular velocity at t == 0
-begin_motion = 30  # [%] begin of motion (elapsed time)
+begin_motion = 20  # [%] begin of motion (elapsed time)
 end_motion = 60  # [%] end of motion (elapsed time)
 
 # Lists with numpy

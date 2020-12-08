@@ -1,0 +1,32 @@
+stateDiagram-v2
+	state Liste_de_base {
+    [*] --> Choix_des_variables
+	[*] --> Paramètres_de_la_simulation
+	Choix_des_variables --> Mouvement_de_la_grue
+	Paramètres_de_la_simulation --> Mouvement_de_la_grue
+	Mouvement_de_la_grue --> Angles_maximums_et_hc
+	Angles_maximums_et_hc --> Centre_de_gravité
+	# Centre_de_gravité --> Couples
+	}
+
+	state Simulation {
+        Couples --> Accélération
+        Accélération --> Vitesse
+		Vitesse --> Angle
+		Angle --> Couples
+    }
+
+    state Résultats {
+        Créer_un_dossier -> Ajouter_les_graphs
+        Créer_un_dossier -> Ajouter_les_résultats_text
+    }
+
+
+
+
+# -- Test with difference mass --
+# test_cane = (mass, (cg_x_ini, cg_x_final), (cg_z_init, cg_z_final))
+test_crane_100 = (1.83, (0.100, 0.297), (0.267, 0.235))
+test_crane_200 = (1.93, (0.117, 0.321), (0.268, 0.240))
+test_crane_500 = (2.23, (0.156, 0.378), (0.271, 0.253))
+test_crane_700 = (2.43, (0.177, 0.408), (0.272, 0.259))
