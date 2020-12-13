@@ -14,7 +14,7 @@ barge_z = 0.17  # [m] Barge height
 barge_mass = 4.3  # [kg] Barge mass
 barge_cg_values = (-0.095, 0.140)  # [m] Center of gravity of the barge with the wood planks
 
-# --- Crane --- (Grapple, syringes and 3D printed parts are also taken into account)
+# --- Crane --- (Grapple, syringes and 3D printed parts are also considered)
 """ COORDINATES SYSTEM
 The origin of this coordinate system is located in the middle of the bottom of the crane base.
 """

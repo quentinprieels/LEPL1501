@@ -9,16 +9,16 @@ stateDiagram-v2
 	# Centre_de_gravité --> Couples
 	}
 
-	state Simulation {
-        Couples --> Accélération
-        Accélération --> Vitesse
-		Vitesse --> Angle
-		Angle --> Couples
-    }
+    state Simulation {
+	Angle --> Couples
+	Couples --> Acceleration__
+	Acceleration__ --> Vitesse
+	Vitesse --> Angle
+	}
 
     state Résultats {
-        Créer_un_dossier -> Ajouter_les_graphs
-        Créer_un_dossier -> Ajouter_les_résultats_text
+        Créer_un_dossier --> Ajouter_les_graphs
+        Créer_un_dossier --> Ajouter_les_résultats_text
     }
 
 
