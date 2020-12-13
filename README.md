@@ -54,7 +54,7 @@ Les graphiques sont :
 ### Evolution :
 Le programme à connu deux phases :
 - Une première avec des équations approximative ne prenant pas en compte l'inertie de la barge ([voir le projet](https://github.com/Nimbelungen/projet1-1157)).
-- Puis une évolution prenant en compte tous les paramètres possibles et a été u fur et à mesure amélioré au cours du temps.
+- Puis une évolution prenant en compte tous les paramètres possibles et a été au fur et à mesure améliorée au cours du temps.
 
 ### Temps : 
 Les différents programmeurs ont mis plusieurs mois pour en arriver là. Aujourd'hui le programme fonctionne bien.
